@@ -1,0 +1,12 @@
+Open this folder in Claude Code and perform a setup audit only. Do not run a live job search yet.
+
+1. Read CLAUDE.md, README.md, config/sources.json, config/fit_priorities.json, config/notifications.json, every file under .claude/agents, and the discover-ai-jobs skill.
+2. Confirm all 13 named subagents are visible, including new-job-monitor.
+3. Confirm Python dependencies are installed.
+4. Confirm the Playwright MCP server can start, or explain exactly what is missing.
+5. Run a local syntax check on every Python script.
+6. Run `python scripts/test_fit_ranking.py` and report whether all career-fit ranking tests pass.
+7. Confirm `state/` is writable but do not create `seen_jobs.json` during the audit.
+8. Confirm the Windows desktop notification helper can be invoked only when a real new-job alert exists; do not display a test alert unless I explicitly ask.
+9. Confirm the workflow retains broad qualifying jobs while ranking inference/infrastructure first, GPU/systems second, general AI/ML third, and backups fourth.
+10. Report any configuration issue without changing the project's eligibility, ranking, or notification policy.

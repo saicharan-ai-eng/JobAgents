@@ -1,0 +1,12 @@
+Run the prioritized AI/ML/NVIDIA job-monitoring workflow in this project by invoking /discover-ai-jobs.
+
+This workflow is United States-only: a posting must have us_location_eligible: true (see CLAUDE.md, "United States location eligibility") before it can be included, ranked, deduplicated, reported, stored, or notified. Never notify for a non-US or ambiguous-location posting.
+
+Preserve state/seen_jobs.json and state/seen_source_jobs.json, and perform a fresh incremental scan across every company configured in config/sources.json. After the run, read runs/<RUN_ID>/notification.json.
+
+- If should_notify is true, send me a prominent NEW JOB ALERT containing every newly discovered qualifying US-eligible role, fit tier, fit score, company, location, posted date, and direct application link. Show Priority 1 inference/infrastructure and Priority 2 GPU/systems roles first. Mention unavailable sources separately.
+- If should_notify is false, do not describe existing jobs as new. Record the completed run normally and keep any user-facing response to a minimal "no new matching jobs" status. If the run found zero unseen postings at all (a Stage-A/B scan turned up nothing new across every source), report "No newly posted jobs detected" rather than implying a full classification pass ran.
+- If baseline_created is true, state that the baseline was created and that future runs will alert only for unseen jobs.
+- Always retain Priority 3 and Priority 4 jobs in the full report; ranking is not an exclusion filter.
+- Never reset or delete the seen-job state (state/seen_jobs.json) or the raw source-posting history (state/seen_source_jobs.json).
+- Never fabricate a job, fit score, or delivery status.

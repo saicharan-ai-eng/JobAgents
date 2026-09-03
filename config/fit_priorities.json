@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "description": "Career-fit ranking for an early-career AI inference, GPU, and AI infrastructure path. Ranking never changes basic inclusion eligibility; it only prioritizes qualifying roles.",
+  "tiers": [
+    {
+      "priority": 1,
+      "label": "Excellent fit — Inference & AI Infrastructure"
+    },
+    {
+      "priority": 2,
+      "label": "Strong adjacent fit — GPU & Systems"
+    },
+    {
+      "priority": 3,
+      "label": "General AI/ML fit"
+    },
+    {
+      "priority": 4,
+      "label": "Low-priority backup"
+    }
+  ],
+  "signals": [
+    {"label": "vLLM", "pattern": "(?<![A-Za-z0-9])vLLM(?![A-Za-z0-9])", "points": 38, "priority": 1},
+    {"label": "SGLang", "pattern": "(?<![A-Za-z0-9])SGLang(?![A-Za-z0-9])", "points": 38, "priority": 1},
+    {"label": "TensorRT-LLM", "pattern": "(?<![A-Za-z0-9])TensorRT[- ]LLM(?![A-Za-z0-9])", "points": 38, "priority": 1},
+    {"label": "Inference engine", "pattern": "\\binference engines?\\b|\\bmodel runtimes?\\b", "points": 30, "priority": 1},
+    {"label": "Model serving", "pattern": "\\bmodel serving\\b|\\bserving models?\\b|\\bLLM serving\\b", "points": 30, "priority": 1},
+    {"label": "Inference optimization", "pattern": "\\binference (?:performance |runtime )?optimi[sz]ation\\b|\\boptimi[sz](?:e|ing) inference\\b", "points": 32, "priority": 1},
+    {"label": "Distributed inference", "pattern": "\\bdistributed inference\\b|\\bmulti[- ]GPU inference\\b", "points": 32, "priority": 1},
+    {"label": "Serving systems", "pattern": "\\bserving systems?\\b|\\bmodel serving infrastructure\\b", "points": 28, "priority": 1},
+    {"label": "KV cache", "pattern": "(?<![A-Za-z0-9])KV[- ]?cache(?![A-Za-z0-9])", "points": 24, "priority": 1},
+    {"label": "Continuous or dynamic batching", "pattern": "\\bcontinuous batching\\b|\\bdynamic batching\\b", "points": 22, "priority": 1},
+    {"label": "Speculative decoding", "pattern": "\\bspeculative decoding\\b", "points": 22, "priority": 1},
+    {"label": "LLM quantization", "pattern": "\\b(?:LLM|model|weight) quanti[sz]ation\\b|\\b(?:INT8|INT4|FP8) inference\\b", "points": 20, "priority": 1},
+    {"label": "AI infrastructure", "pattern": "\\bAI infrastructure\\b|\\bML infrastructure\\b|\\bmachine learning infrastructure\\b", "points": 28, "priority": 1},
+    {"label": "ML systems", "pattern": "\\bML systems? (?:engineering|infrastructure|platform|runtime|serving|team)\\b|\\bmachine learning systems? (?:engineering|infrastructure|platform|runtime|serving|team)\\b", "points": 26, "priority": 1},
+
+    {"label": "CUDA", "pattern": "(?<![A-Za-z0-9])CUDA(?![A-Za-z0-9])", "points": 25, "priority": 2},
+    {"label": "GPU kernels", "pattern": "\\bGPU kernels?\\b|\\bCUDA kernels?\\b|\\bcustom kernels?\\b", "points": 26, "priority": 2},
+    {"label": "TensorRT", "pattern": "(?<![A-Za-z0-9])TensorRT(?![-A-Za-z0-9])", "points": 22, "priority": 2},
+    {"label": "Triton", "pattern": "(?<![A-Za-z0-9])Triton(?![A-Za-z0-9])", "points": 20, "priority": 2},
+    {"label": "NCCL", "pattern": "(?<![A-Za-z0-9])NCCL(?![A-Za-z0-9])", "points": 22, "priority": 2},
+    {"label": "Accelerated computing", "pattern": "\\baccelerated computing\\b", "points": 22, "priority": 2},
+    {"label": "Distributed systems", "pattern": "\\bdistributed systems?\\b", "points": 18, "priority": 2},
+    {"label": "Distributed training", "pattern": "\\bdistributed training\\b|\\bmulti[- ]GPU training\\b", "points": 18, "priority": 2},
+    {"label": "GPU", "pattern": "(?<![A-Za-z0-9])GPUs?(?![A-Za-z0-9])", "points": 13, "priority": 2},
+    {"label": "HPC", "pattern": "(?<![A-Za-z0-9])HPC(?![A-Za-z0-9])|\\bhigh performance computing\\b", "points": 16, "priority": 2},
+    {"label": "Performance optimization", "pattern": "\\bperformance optimi[sz]ation\\b|\\bsystems performance\\b|\\bperformance engineering\\b", "points": 16, "priority": 2},
+    {"label": "Compiler or kernel engineering", "pattern": "\\bcompiler(?:s| engineering)?\\b|\\bkernel engineering\\b", "points": 13, "priority": 2},
+    {"label": "PyTorch", "pattern": "(?<![A-Za-z0-9])PyTorch(?![A-Za-z0-9])", "points": 10, "priority": 2},
+
+    {"label": "MLOps", "pattern": "(?<![A-Za-z0-9])MLOps(?![A-Za-z0-9])", "points": 16, "priority": 3},
+    {"label": "ML platform", "pattern": "\\bML platform\\b|\\bmachine learning platform\\b", "points": 18, "priority": 3},
+    {"label": "Machine learning", "pattern": "\\bmachine learning\\b", "points": 12, "priority": 3},
+    {"label": "Deep learning", "pattern": "\\bdeep learning\\b", "points": 12, "priority": 3},
+    {"label": "Generative AI", "pattern": "\\bgenerative AI\\b|(?<![A-Za-z0-9])Gen[- ]?AI(?![A-Za-z0-9])", "points": 12, "priority": 3},
+    {"label": "LLM", "pattern": "(?<![A-Za-z0-9])LLMs?(?![A-Za-z0-9])|\\blarge language models?\\b", "points": 11, "priority": 3},
+    {"label": "AI cloud", "pattern": "\\bAI cloud\\b|\\bcloud AI\\b", "points": 10, "priority": 3},
+    {"label": "Model training", "pattern": "\\bmodel training\\b", "points": 10, "priority": 3},
+    {"label": "Computer vision", "pattern": "\\bcomputer vision\\b", "points": 10, "priority": 3},
+    {"label": "NLP", "pattern": "(?<![A-Za-z0-9])NLP(?![A-Za-z0-9])|\\bnatural language processing\\b", "points": 10, "priority": 3},
+    {"label": "Kubernetes", "pattern": "(?<![A-Za-z0-9])Kubernetes(?![A-Za-z0-9])|(?<![A-Za-z0-9])K8s(?![A-Za-z0-9])", "points": 7, "priority": 3},
+    {"label": "Docker", "pattern": "(?<![A-Za-z0-9])Docker(?![A-Za-z0-9])|\\bcontainers?\\b", "points": 5, "priority": 3},
+
+    {"label": "Artificial intelligence", "pattern": "\\bartificial intelligence\\b", "points": 6, "priority": 4},
+    {"label": "AI mention", "pattern": "(?<![A-Za-z])AI(?![A-Za-z])", "points": 3, "priority": 4},
+    {"label": "ML mention", "pattern": "(?<![A-Za-z])ML(?![A-Za-z])", "points": 3, "priority": 4},
+    {"label": "NVIDIA", "pattern": "\\bNVIDIA\\b", "points": 5, "priority": 4}
+  ],
+  "title_signals": [
+    {"label": "Inference title", "pattern": "\\binference\\b|\\bmodel serving\\b", "points": 24, "priority": 1},
+    {"label": "AI/ML infrastructure title", "pattern": "\\b(?:AI|ML|machine learning) infrastructure\\b|\\bML systems?\\b", "points": 22, "priority": 1},
+    {"label": "GPU/CUDA title", "pattern": "(?<![A-Za-z0-9])GPU(?![A-Za-z0-9])|(?<![A-Za-z0-9])CUDA(?![A-Za-z0-9])|\\baccelerated computing\\b", "points": 18, "priority": 2},
+    {"label": "Systems/performance title", "pattern": "\\bdistributed systems?\\b|\\bsystems software\\b|\\bperformance engineer(?:ing)?\\b|\\bcompiler engineer(?:ing)?\\b", "points": 14, "priority": 2},
+    {"label": "ML platform/MLOps title", "pattern": "\\bML platform\\b|\\bmachine learning platform\\b|(?<![A-Za-z0-9])MLOps(?![A-Za-z0-9])", "points": 14, "priority": 3},
+    {"label": "Core AI/ML title", "pattern": "\\bmachine learning\\b|\\bdeep learning\\b|\\bgenerative AI\\b|\\bcomputer vision\\b|\\bnatural language processing\\b|(?<![A-Za-z0-9])LLM(?![A-Za-z0-9])", "points": 10, "priority": 3}
+  ]
+}

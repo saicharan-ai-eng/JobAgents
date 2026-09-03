@@ -1,0 +1,6 @@
+{
+  "notify_on_first_run": false,
+  "desktop_notifications": true,
+  "max_titles_in_notification": 3,
+  "notification_duration_seconds": 8
+}

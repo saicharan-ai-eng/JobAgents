@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+runs/*
+!runs/.gitkeep
+state/*
+!state/.gitkeep
+backups/
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.playwright-mcp/

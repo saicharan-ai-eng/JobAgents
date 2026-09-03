@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SourceResult",
+  "type": "object",
+  "required": ["company", "source_url", "fetched_at", "status", "raw_posting_count", "postings"],
+  "properties": {
+    "company": {"type": "string"},
+    "source_url": {"type": "string"},
+    "fetched_at": {"type": "string"},
+    "status": {"enum": ["success", "partial", "blocked", "failed"]},
+    "reason": {"type": ["string", "null"]},
+    "raw_posting_count": {"type": "integer", "minimum": 0},
+    "inventory_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Stage-A: total lightweight listing records scanned (no detail page opened)."
+    },
+    "unseen_inventory_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Stage-A/B boundary: inventory identities not already in state/seen_source_jobs.json (or a clearly-signaled repost), eligible for a detail fetch."
+    },
+    "previously_processed_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Inventory identities already recorded in state/seen_source_jobs.json; their detail pages were not re-fetched."
+    },
+    "detail_fetch_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Stage-B: number of detail pages actually opened this run (should equal len(postings))."
+    },
+    "inventory": {
+      "type": "array",
+      "description": "Stage-A lightweight scan of every listing encountered this run, used only to refresh source-history freshness -- not fed into classification.",
+      "items": {
+        "type": "object",
+        "required": ["company", "job_title", "job_url"],
+        "properties": {
+          "company": {"type": "string"},
+          "job_title": {"type": "string"},
+          "job_id": {"type": ["string", "null"]},
+          "location": {"type": ["string", "null"]},
+          "posting_date": {"type": ["string", "null"]},
+          "job_url": {"type": "string"},
+          "source_keyword": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "postings": {
+      "type": "array",
+      "description": "Stage-B: only unseen (or clearly-reposted) postings with full detail. This is what classification/ranking/reporting consume.",
+      "items": {
+        "type": "object",
+        "required": ["company", "job_title", "job_url"],
+        "properties": {
+          "company": {"type": "string"},
+          "job_title": {"type": "string"},
+          "job_id": {"type": ["string", "null"]},
+          "location": {"type": ["string", "null"]},
+          "posting_date": {"type": ["string", "null"]},
+          "experience_level_text": {"type": ["string", "null"]},
+          "job_url": {"type": "string"},
+          "team_department": {"type": ["string", "null"]},
+          "short_description": {"type": ["string", "null"]},
+          "full_description_text": {"type": ["string", "null"]},
+          "source_keyword": {"type": ["string", "null"]},
+          "processing_status": {"enum": ["success", "failed", "blocked", "excluded_non_us", "excluded_title_reject", "excluded_out_of_scope"]},
+          "stage_a_exclusion_reason": {
+            "type": ["string", "null"],
+            "description": "Optional short reason string. When processing_status is excluded_title_reject: which unconditional Stage-A title check matched (senior_title, marketing_role_title, sales_role_title, hr_role_title). When excluded_out_of_scope: a brief note on why the posting was judged outside the source's required_scope (e.g. not actually Cloud-scoped)."
+          },
+          "repost_signal": {
+            "type": "boolean",
+            "description": "Set by the scraper only when the source site itself explicitly indicates this listing was reposted/renewed."
+          },
+          "is_repost": {"type": "boolean"},
+          "original_first_seen_at": {"type": ["string", "null"]},
+          "repost_detected_at": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

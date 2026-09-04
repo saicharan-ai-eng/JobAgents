@@ -1,4 +1,4 @@
-Copy-paste this shorter version into `README.md`:
+
 
 ````markdown
 # Multi-Agent AI/ML Job Discovery Monitor
